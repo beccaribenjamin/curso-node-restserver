@@ -1,16 +1,5 @@
-const { configDotenv } = require('dotenv');
+
 const mongoose = require('mongoose');
-const dotenv = require('dotenv')
-/*
-De aca hay nuevo
-*/
-
-dotenv.config({path: "./.env"})
-
-
-/*
-Hasta aca 
-*/
 
 
 
