@@ -1,9 +1,12 @@
 
 const mongoose = require('mongoose');
+
+/*A revisar el siguiente codigo*/
+
 const dotenv = require('dotenv');
+dotenv.config({path:"./.env"})
 
-dotenv.config({path: "./.env"})
-
+/* Hasta acá revisar */
 
 const dbConnection = async() => {
 
