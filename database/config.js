@@ -1,17 +1,13 @@
 const mongoose = require('mongoose');
-
+import * as dotenv from "dotenv";
+dotenv.config({path: "./.env"})
 
 
 const dbConnection = async() => {
 
     try{
 
-        await mongoose.connect( process.env.MONGODB_CNN,{
-            useNewUrlParser: true,
-            useUnifiedTopology : true,
-            // useCreateIndex: true,
-            // useFindAndModify: false
-        });
+        await mongoose.connect( process.env.MONGODB_CNN );
 
         console.log('Base de Datos online')
 
