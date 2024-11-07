@@ -79,15 +79,11 @@ const usuariosDelete = async(req, res) => {
 
     const { id } = req.params;
 
-    //Fisicamente lo borramos
-    // const usuario = await Usuario.findByIdAndDelete( id ); ---> Esta opcion no es la mejor porque perdemos la unidad referencial de la persona
-
-    //Cambiando el estado es mucho mejor
-    const usuario = await Usuario.findByIdAndUpdate( id, {estado: false} )
+    const usuario = await Usuario.findByIdAndUpdate( id, {estado: false} );
 
     res.json({
         msg: 'Delete Api - Controlador',
-        usuario
+        usuario,
     });
 }
 

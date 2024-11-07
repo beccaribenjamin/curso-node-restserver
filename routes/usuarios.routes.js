@@ -2,12 +2,11 @@
 const {Router} = require('express');
 const { check } = require('express-validator');
 
+const { validarCampos, validarJWT, esAdminRole, tieneRol } = require('../middlewares');
 
-const { validarCampos } = require('../middlewares/validar-campos');
 const { esRoleValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-validators');
 
 const { usuariosGet, usuariosPut, usuariosPost, usuariosPatch, usuariosDelete } = require('../controllers/usuarios');
-
 
 const router = Router();
 
@@ -35,6 +34,9 @@ router.post('/',[
 router.patch('/', usuariosPatch);
 
 router.delete('/:id',[
+    validarJWT,
+    // esAdminRole, //--->>>Este me sirve para validar que solo usuario con admin role pueda hacer delete
+    tieneRol('ADMIN_ROLE', 'VENTAS_ROLE'), //--->>>Este me sirve para validar que solo con ciertos roles puedan hacer delete
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ),
     validarCampos
